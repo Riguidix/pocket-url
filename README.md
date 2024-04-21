@@ -28,6 +28,10 @@ Go inside `Server` Folder and install the required dependencies
 
 Go inside `Client` Folder and install the required dependencies
 
+```bash
+  npm install
+```
+
 Start the `Server` in dev with nodemon
 
 ```bash
