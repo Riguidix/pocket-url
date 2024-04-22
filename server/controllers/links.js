@@ -1,16 +1,35 @@
 const Link = require('../models/links');
+const Hash = require('../models/hash');
+const { generateHash } = require('../services/keyGenerator');
 
 /**
  * Creates a new Link
  */
-exports.createLink = (req, res) => {
+exports.createLink = async (req, res) => {
     try {
+        let validate = false;
+        let hash;
+
+        do {
+            hash = generateHash(5);
+            let hashFind = await Hash.findOne({ hash: hash });
+    
+            if (hashFind === null) {
+                validate = true;
+            }
+          } while (!validate);
+
         let newLink = new Link({
-            hash: req.body.hash,
+            hash: hash,
             user: req.body.user,
             originalURL: req.body.originalURL            
         });
 
+        let newHash = new Hash({
+            hash: hash
+        });
+
+        newHash.save();
         newLink.save()
             .then(link => {
                 res.status(201).json({
@@ -19,7 +38,14 @@ exports.createLink = (req, res) => {
                 });
             })
             .catch(error => {
-                console.log(error);
+                if (error.code === 11000) {
+                    res.status(200).json({
+                        success: true,
+                        message: "El hash ya existe."
+                    });
+                    return;                    
+                }
+
                 res.status(200).json({
                     success: true,
                     message: "Hubo un error al crear el link."
