@@ -105,6 +105,9 @@ exports.readLinkByHash = (req, res) => {
     }
 }
 
+/**
+ * Update a Link by ID
+ */
 exports.updateLink = (req, res) => {
     try {
         let updatedLink = {
@@ -135,6 +138,40 @@ exports.updateLink = (req, res) => {
                 res.status(400).json({
                     success: false,
                     message: "Hubo un error al actualizar el link."
+                });
+            });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Hubo un error en el servidor."
+        });
+    }
+}
+
+/**
+ * Delete a Link by ID
+ */
+exports.deleteLink = (req, res) => {
+    try {
+        Link.findByIdAndDelete(req.params.id)
+            .then(link => {
+                if (link === null) {
+                    res.status(200).json({
+                        success: true,
+                        message: "No se encontraron links con ese identificador para eliminar.",
+                    });
+                    return;
+                }
+
+                res.status(200).json({
+                    success: true,
+                    message: "El link se ha eliminado correctamente."
+                });
+            })
+            .catch(error => {
+                res.status(400).json({
+                    success: false,
+                    message: "Hubo un error al eliminar el link."
                 });
             });
     } catch (error) {
