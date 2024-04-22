@@ -104,3 +104,43 @@ exports.readLinkByHash = (req, res) => {
         });
     }
 }
+
+exports.updateLink = (req, res) => {
+    try {
+        let updatedLink = {
+            hash: req.body.hash,
+            user: req.body.user,
+            originalURL: req.body.originalURL,
+            expiredAt: Date.now()
+        }
+
+        Link.findByIdAndUpdate(req.params.id, updatedLink, { runValidators: true, new: true })
+            .then(link => {
+                if (link === null) {
+                    res.status(200).json({
+                        success: true,
+                        message: "No se encontraron links con ese identificador para actualizar.",
+                        data: []
+                    });
+                    return;
+                }
+
+                res.status(200).json({
+                    success: true,
+                    message: "El link se ha actualizado correctamente.",
+                    data: link
+                });
+            })
+            .catch(error => {
+                res.status(400).json({
+                    success: false,
+                    message: "Hubo un error al actualizar el link."
+                });
+            });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Hubo un error en el servidor."
+        });
+    }
+}
