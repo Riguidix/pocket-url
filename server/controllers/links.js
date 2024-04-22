@@ -33,6 +33,9 @@ exports.createLink = (req, res) => {
     }
 }
 
+/**
+ * Read all Links
+ */
 exports.readLinks = (req, res) => {
     try {
         Link.find({})
@@ -56,6 +59,42 @@ exports.readLinks = (req, res) => {
                 res.status(400).json({
                     success: false,
                     message: "Hubo un error al listar los links."
+                });
+            });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Hubo un error en el servidor."
+        });
+    }
+}
+
+/**
+ * Read a Link by Hash
+ */
+exports.readLinkByHash = (req, res) => {
+    try {
+        Link.find({ hash: req.params.hash })
+            .then(link => {
+                if (link.length === 0 || link === null) {
+                    res.status(200).json({
+                        sucecss: true,
+                        message: "No se encontro el link para listar con ese identificador.",
+                        data: link
+                    });
+                    return;
+                }
+
+                res.status(200).json({
+                    success: true,
+                    message: "El link se listo correctamente.",
+                    data: link
+                });
+            })
+            .catch(error => {
+                res.status(400).json({
+                    success: false,
+                    message: "Hubo un error al listar el link con ese identificador."
                 });
             });
     } catch (error) {
