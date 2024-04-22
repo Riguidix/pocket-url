@@ -32,3 +32,36 @@ exports.createLink = (req, res) => {
         });
     }
 }
+
+exports.readLinks = (req, res) => {
+    try {
+        Link.find({})
+            .then(links => {
+                if (links.length === 0 || links === null) {
+                    res.status(200).json({
+                        sucecss: true,
+                        message: "No se encontraron links para listar.",
+                        data: links
+                    });
+                    return;
+                }
+
+                res.status(200).json({
+                    success: true,
+                    message: "Los links se listaron correctamente.",
+                    data: links
+                });
+            })
+            .catch(error => {
+                res.status(400).json({
+                    success: false,
+                    message: "Hubo un error al listar los links."
+                });
+            });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Hubo un error en el servidor."
+        });
+    }
+}

@@ -19,7 +19,7 @@ const linksSchemas = new Schema({
     expiredAt: {
         type: Date,
         default: Date.now,
-        index: { expires: '5m' },
+        index: { expires: 3600 },
     }
 }, { timestamps: true });
 
