@@ -15,14 +15,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors({
-    origin: ["https://pocketurl.netlify.app/", "http://localhost:5173"],
+    origin: "https://pocketurl.netlify.app/",
     optionsSuccessStatus: 200
 }));
 
 app.use(function(req, res, next) {
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', ["https://pocketurl.netlify.app/", "http://localhost:5173"]);
+    res.setHeader('Access-Control-Allow-Origin', "https://pocketurl.netlify.app/");
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
