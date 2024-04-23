@@ -34,7 +34,8 @@ exports.createLink = async (req, res) => {
             .then(link => {
                 res.status(201).json({
                     success: true,
-                    message: "El link se ha creado exitosamente."
+                    message: "El link se ha creado exitosamente.",
+                    data: link
                 });
             })
             .catch(error => {

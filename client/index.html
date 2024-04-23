@@ -9,5 +9,16 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      const defaultTheme = "dark";
+       if (!localStorage.getItem("theme")) {
+         localStorage.setItem("theme", defaultTheme);
+       }
+       if (localStorage.getItem("theme") === "dark") {
+         document.documentElement.classList.add("dark");
+       } else {
+         document.documentElement.classList.remove("dark");
+       }
+     </script>
   </body>
 </html>
