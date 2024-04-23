@@ -1,4 +1,4 @@
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from "react-hot-toast";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
@@ -6,7 +6,7 @@ import { useState } from "react";
 export default function Form() {
   const [value, setValue] = useState("");
 
-  const notify = () => toast('The URL has been copied! 🎉.');
+  const notify = () => toast("The URL has been copied! 🎉.");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -33,7 +33,7 @@ export default function Form() {
         })
         .catch((err) => console.error(err));
 
-        setValue("");
+      setValue("");
     }
   };
 
