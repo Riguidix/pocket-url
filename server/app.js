@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors({
-    origin: process.env.APP_URL || "http://localhost:5173/",
+    origin: [https://pocketurl.netlify.app/, "http://localhost:5173"]
     optionsSuccessStatus: 200
 }));
 
