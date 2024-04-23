@@ -3,6 +3,8 @@
 
 URL Shortener tool to make all your links can fit in your pocket 😊
 
+(NOTE: The links will expire in 1hr, for test purposes ✌)
+
 ## Badges
 
 ![Version 0.0.1](https://img.shields.io/badge/version-0.0.1-0)
