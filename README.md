@@ -5,6 +5,20 @@ URL Shortener tool to make all your links can fit in your pocket 😊
 
 (NOTE: The links will expire in 1hr, for test purposes ✌)
 
+# TODO:
+## V1
+- [ ] Fix version
+- [ ] Add responsive design.
+- [ ] Fix re-load on creation of link.
+- [ ] Add 404 Page
+
+## V2
+- [ ] Add user authentication (by the momento everything is global).
+- [ ] Add control of the "expire by".
+- [ ] Add "archived" / "deleted" links storage-
+- [ ] Custom activity (how many clicks a link gets).
+  - [ ] Expire if the link it's not active by a month.
+
 ## Badges
 
 ![Version 0.0.1](https://img.shields.io/badge/version-0.0.1-0)
