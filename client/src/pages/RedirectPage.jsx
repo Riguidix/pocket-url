@@ -2,9 +2,6 @@ import { useEffect, useState } from "react"
 import { redirect, useNavigate } from "react-router-dom";
 
 export default function RedirectPage(props) {
-    const [loading, setLoading] = useState(true);
-    const navigate = useNavigate();
-
     function createLink (link) {
         let element = document.createElement("a");
 
