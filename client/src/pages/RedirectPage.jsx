@@ -17,7 +17,8 @@ export default function RedirectPage() {
     let url = window.location.href;
     let hash = url.slice(-5);
 
-    fetch(`http://localhost:3000/api/links/h/${hash}`)
+    // eslint-disable-next-line no-undef
+    fetch(`${import.meta.env.VITE_API_URL}links/h/${hash}`)
       .then((response) => response.json())
       .then((data) => {
         let originalURL = data.data[0].originalURL;

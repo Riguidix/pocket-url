@@ -15,8 +15,9 @@ export default function Form() {
       let datos = {
         originalURL: value,
       };
-
-      fetch("http://localhost:3000/api/links", {
+      
+      // eslint-disable-next-line no-undef
+      fetch(`${import.meta.env.VITE_API_URL}links`, {
         method: "POST",
         body: JSON.stringify(datos),
         headers: {

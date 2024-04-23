@@ -7,7 +7,9 @@ export default function Table() {
   const notify = (url) => toast(`The clicked URL ${url} has been copied! 🎉.`);
 
   const getLinks = useCallback(async () => {
-    fetch("http://localhost:3000/api/links")
+    // eslint-disable-next-line no-undef
+    // fetch(`${process.env.REACT_APP_API_URL}links`)
+    fetch(`${import.meta.env.VITE_API_URL}links`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
