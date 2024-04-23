@@ -14,11 +14,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-app.use(
-  cors({
-    origin: "*",
-  })
-);
+app.use(cors({
+    origin: '*',
+    optionsSuccessStatus: 200
+}));
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
