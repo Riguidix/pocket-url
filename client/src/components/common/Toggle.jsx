@@ -1,9 +1,20 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export default function Toggle() {
   const [toggle, setToggle] = useState(false);
+
+  const handleToggle = useCallback(() => {
+    let result = localStorage.getItem("theme") !== "dark";
+
+    setToggle(result);
+  }, []);
+
+
+  useEffect(() => {
+    handleToggle();
+  }, [handleToggle]);
 
   return (
     // <div className="flex h-full items-center justify-center w-full">
@@ -15,7 +26,7 @@ export default function Toggle() {
 
         <input
           type="checkbox"
-          value={!toggle}
+          checked={toggle}
           className="sr-only peer"
           onChange={() => {
             const theme = localStorage.getItem("theme");
