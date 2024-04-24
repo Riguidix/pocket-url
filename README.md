@@ -7,9 +7,9 @@ URL Shortener tool to make all your links can fit in your pocket 😊
 
 # TODO:
 ## V1
-- [ ] Fix version
-- [ ] Add responsive design.
-- [ ] Fix re-load on creation of link.
+- [x] Fix version
+- [x] Add responsive design.
+- [x] Fix re-load on creation of link.
 - [ ] Add 404 Page
 
 ## V2
