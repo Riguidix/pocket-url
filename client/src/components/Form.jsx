@@ -6,7 +6,7 @@ import { faLink, faScissors } from "@fortawesome/free-solid-svg-icons";
 import Input from "./common/Input";
 import Button from "./common/Button";
 
-export default function Form() {
+export default function Form({ fetchData }) {
   const [value, setValue] = useState("");
 
   const notify = () => toast("The URL has been copied! 🎉.");
@@ -38,6 +38,8 @@ export default function Form() {
 
       setValue("");
     }
+
+    fetchData();
   };
 
   return (
@@ -115,7 +117,7 @@ export default function Form() {
             sm:w-2/6
             lg:w-1/4
           "
-          action={ () => handleSubmit(event) }
+          action={ (event) => handleSubmit(event) }
         />
       </div>
     </form>
