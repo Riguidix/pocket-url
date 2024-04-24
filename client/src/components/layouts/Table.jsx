@@ -22,9 +22,9 @@ export default function Table() {
   }, [getLinks]);
 
   return (
-    <div className="h-full flex items-start justify-center overflow-auto w-2/3">
+    <div className="h-full flex items-start justify-center overflow-auto w-full">
       <Toaster />
-      <table className="table-auto h-auto w-2/3">
+      <table className="table-auto h-auto w-full">
         <thead className="bg-green-900 dark:bg-gray-700 text-white">
           <tr>
             <th>Short Link</th>

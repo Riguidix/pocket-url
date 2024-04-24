@@ -4,7 +4,7 @@ export default function Main() {
   return (
     <div className="grid grid-rows-5 gap-1 h-full items-center justify-center w-full">
       <div className="row-span-3 text-center w-full">
-        <h1 className="mb-10 text-5xl w-full">
+        <h1 className="mb-10 text-5xl md:text-6xl lg:text-6xl w-full">
           Short your links so can fit in your Pocket 😊
         </h1>
 

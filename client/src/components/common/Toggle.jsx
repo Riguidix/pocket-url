@@ -11,7 +11,6 @@ export default function Toggle() {
     setToggle(result);
   }, []);
 
-
   useEffect(() => {
     handleToggle();
   }, [handleToggle]);
